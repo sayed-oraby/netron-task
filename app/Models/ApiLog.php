@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ApiLog extends Model
 {
-    protected $fillable = [ 'log' ];
+    protected $fillable = [ 'log' , 'execution_time' ];
 
 
 }

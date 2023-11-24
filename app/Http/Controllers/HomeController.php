@@ -20,6 +20,8 @@ class HomeController extends Controller
     {
         try {
 
+            $startTime = microtime(true);
+
             $client = new \GuzzleHttp\Client();
 
             $headers = [
@@ -45,8 +47,13 @@ class HomeController extends Controller
 
             $res = $client->sendAsync($request)->wait();
 
+            $endTime = microtime(true);
+
+            $executionTime = $endTime - $startTime;
+
             ApiLog::create([
-                'log' => $res->getBody()
+                'log' => $res->getBody(),
+                'execution_time' => $executionTime
             ]);
 
             $api_data = json_decode($res->getBody(), true);

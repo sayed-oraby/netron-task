@@ -45,7 +45,6 @@ class Handler extends ExceptionHandler
 
     public function save_exception($exception)
     {
-
         $content['message'] = $exception->getMessage();
         $content['file'] = $exception->getFile();
         $content['line'] = $exception->getLine();
